@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Ecommerce</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon" (click)="Login()" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+
+  <button mat-icon-button class="example-icon" routerLink="/register" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+
+  <button mat-button [matMenuTriggerFor]="beforeMenu" class="auth text-truncate">
+    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="rounded-circle p-0 m-0" alt=""
+      [width]="40" [height]="40">
+  </button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <a mat-menu-item routerLink="/dashboard"><mat-icon>home</mat-icon> Perfil</a>
+    <button mat-menu-item><mat-icon>login</mat-icon> Logout</button>
+  </mat-menu>
+
+</mat-toolbar>
