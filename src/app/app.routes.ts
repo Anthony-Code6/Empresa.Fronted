@@ -8,6 +8,9 @@ export const routes: Routes = [
     path: "", pathMatch: 'full', component: DashboardComponent
   },
   {
+    path: "login", component: LoginComponent
+  },
+  {
     path: "register", component: RegisterComponent
   }
 ];

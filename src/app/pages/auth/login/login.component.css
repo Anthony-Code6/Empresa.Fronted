@@ -1,8 +1,22 @@
-mat-form-field,button{
+.contenedor {
   width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background-color: rgb(75, 77, 76);
 }
 
-h3{
+.card{
+  padding: 10px;
+  border-radius: 10px;
+}
+
+button{
+  width: 100%;
+  height: 2.9rem;
+}
+
+h3 {
   font-family: 'Times New Roman';
   font-size: 30px;
 }

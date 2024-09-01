@@ -2,14 +2,14 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Ecommerce</span>
+  <span routerLink="/" class="home">Ecommerce</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon" (click)="Login()" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
+  <button mat-button class="example-icon" routerLink="/login" aria-label="Example icon-button with share icon">
+    Iniciar Sesion
   </button>
 
-  <button mat-icon-button class="example-icon" routerLink="/register" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
+  <button mat-button class="example-icon" routerLink="/register" aria-label="Example icon-button with share icon">
+    Registrar
   </button>
 
   <button mat-button [matMenuTriggerFor]="beforeMenu" class="auth text-truncate">

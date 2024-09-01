@@ -1,27 +1,29 @@
-<mat-dialog-content>
-  <h3 class="text-center">Inicio de Sesión</h3>
-  <div class="row g-1 justify-content-start">
-    <div class="col-12">
-      <mat-form-field>
-        <mat-label>Correo Electrónico</mat-label>
-        <mat-icon matPrefix>mail</mat-icon>
-        <input matInput type="email" />
-      </mat-form-field>
-    </div>
-    <div class="col-12">
-      <mat-form-field>
+<div class="contenedor">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="text-center">Inicio de Sesión</h3>
+      <hr/>
+      <div class="row g-1 justify-content-start">
+        <div class="col-12">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control shadow-none" id="email" placeholder="name@example.com">
+            <label for="email">Correo Electrónico</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control shadow-none" id="password" placeholder="password">
+            <label for="password">Contraseña</label>
+          </div>
 
-        <mat-label>Contraseña</mat-label>
 
-        <input matInput [type]="hide() ? 'password' : 'text'" />
-        <mat-icon matPrefix>lock</mat-icon>
-        <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-pressed]="hide()">
-          <mat-icon matSuffix>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
+        </div>
+      </div>
+
+      <div class="buttom">
+        <button mat-flat-button color="primary"><mat-icon>login</mat-icon> Ingresar</button>
+      </div>
+
     </div>
   </div>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-flat-button color="primary" (click)="closeDialog()"><mat-icon>login</mat-icon> Ingresar</button>
-</mat-dialog-actions>
+</div>
