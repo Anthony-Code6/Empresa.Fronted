@@ -1,5 +1,79 @@
 <section class="body">
-  <section class="header container">
-    <h3>Registrar Nueva Cuenta</h3>
+  <section class="container">
+    <header class="header">
+      <h3>Registrar Nueva Cuenta</h3>
+    </header>
+
+    <main class="col-5">
+      <section class="redes-sociales">
+        <section class="header">
+          <div class="d-flex justify-content-between align-self-center">
+            <h4>Redes Sociales</h4>
+            <span (click)="addLesson()" class="align-self-center">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+          </div>
+        </section>
+
+        <hr />
+
+        <section class="content">
+
+          <div class="add-lessons-form" [formGroup]="form">
+
+            <div formArrayName="lessons">
+              @for (lessonss of lessons.controls; track lessonss; let i = $index) {
+
+              <div class="d-flex justify-content-between mt-2">
+                <div class="d-flex">
+                  <div class="form-check me-3 align-self-center">
+                    <input class="form-check-input shadow-none" type="radio" value="" name="social" id="instagram">
+                    <label class="form-check-label" for="instagram">
+                      <i class="bi bi-instagram"></i>
+                    </label>
+                  </div>
+
+                  <div class="form-check me-3 align-self-center">
+                    <input class="form-check-input shadow-none" type="radio" value="" name="social" id="linkedin">
+                    <label class="form-check-label" for="linkedin">
+                      <i class="bi bi-linkedin"></i>
+                    </label>
+                  </div>
+
+                  <div class="form-check me-3 align-self-center">
+                    <input class="form-check-input shadow-none" type="radio" value="" name="social" id="facebook">
+                    <label class="form-check-label" for="facebook">
+                      <i class="bi bi-facebook"></i>
+                    </label>
+                  </div>
+                </div>
+
+                <span (click)="deleteLesson(i)" class="align-self-center">
+                  <i class="bi bi-trash3"></i>
+                </span>
+
+              </div>
+
+              <div class="w-100">
+                <input type="text" class="form-control form-control-sm shadow-none"
+                  placeholder="Ingrese la dirección de la red social." />
+              </div>
+
+              }
+            </div>
+
+
+          </div>
+        </section>
+      </section>
+
+
+
+    </main>
+
+    <footer>
+
+    </footer>
+
   </section>
 </section>

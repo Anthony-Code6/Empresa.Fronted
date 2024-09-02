@@ -1,8 +1,32 @@
-h3{
+h3 {
   font-family: 'Times New Roman';
   font-size: 26px;
 }
-.container{
-  margin-top: 10px;
-  background-color: aqua;
+
+h4 {
+  font-family: 'Times New Roman';
+  font-size: 18px;
+  margin: 0px;
 }
+
+hr{
+  color: #000000;
+}
+
+.container {
+  margin-top: 10px;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+}
+
+span {
+  background-color: white;
+  border-radius: 100%;
+  padding: 1px 2px;
+  cursor: pointer;
+}
+
+span i{
+  color: black;
+}
+
