@@ -9,7 +9,11 @@ h4 {
   margin: 0px;
 }
 
-hr{
+label{
+  font-family: 'Times New Roman';
+}
+
+hr {
   color: #000000;
 }
 
@@ -19,6 +23,16 @@ hr{
   justify-content: center;
 }
 
+textarea {
+  resize: none;
+  field-sizing: content;
+}
+
+.redes-sociales .content {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 span {
   background-color: white;
   border-radius: 100%;
@@ -26,7 +40,72 @@ span {
   cursor: pointer;
 }
 
-span i{
+span i {
   color: black;
 }
+
+/* Reiniciar Archivo */
+
+.reload i{
+  cursor: pointer;
+}
+
+/* Boton File */
+
+.contenedor-btn-file input[type="file"] {
+  appearance: none;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+
+.contenedor-btn-file {
+  display: inline-block;
+  position: relative;
+  background-color: #186CC3;
+  color: #fff;
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .15);
+  overflow: hidden;
+  transition: ease-out 120ms background-color;
+}
+
+.contenedor-btn-file:hover {
+  background-color: #16579B;
+}
+
+.contenedor-btn-file:active {
+  background-color: #114378;
+}
+
+.contenedor-btn-file>i {
+  font-size: 20px;
+  margin-right: 3px;
+}
+
+.contenedor-btn-file label {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.contenedor-btn-file.bordeado {
+  background-color: #fff;
+  border: 2px solid #186CC3;
+  color: #186CC3;
+}
+
+.contenedor-btn-file.bordeado:hover {
+  background-color: #186CC3;
+  color: #fff;
+}
+
 
