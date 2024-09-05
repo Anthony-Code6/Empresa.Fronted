@@ -1,103 +1,165 @@
+<app-toolbar />
+
 <section class="body">
   <section class="container">
     <header class="header">
-      <h3>Registrar Nueva Cuenta</h3>
+      <h3 class="text-center">Registrar Nueva Cuenta</h3>
     </header>
 
-    <main class="">
-      <!-- Empresa -->
-      <section class="empresa">
-        <section class="header">
-          <h4>Empresa</h4>
-        </section>
+    <main class="row -g-3 justify-content-center">
+      <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-10 col-11">
+        <form autocomplete="off" enctype="multipart/form-data" (submit)="guardarEmpresa()">
 
-        <hr />
-
-        <section class="content">
-
-          <div class="text-center">
-            <div class="text-end reload">
-              <i class="bi bi-arrow-clockwise" (click)=" reloadSeleccion()"></i>
-            </div>
-
-            <div class="d-block">
-              <img class="rounded-circle" [ngSrc]="logoDefault" alt="Logo" width="150" height="150"
-                id="imagen_seleccionada" priority>
-            </div>
-
-            <button class="contenedor-btn-file bordeado my-1">
-              <i class="bi bi-cloud-arrow-up-fill"></i>
-              Seleccionar Archivo
-              <label for="logo"></label>
-              <input type="hidden" id="logobase64" name="logobase64" value="" />
-              <input type="file" id="logo" name="logo" (change)="LeerArchivo($event)">
-            </button>
-
-          </div>
-
-          <div class="mb-3">
-            <label for="" class="form-label mb-1">Nombre de la Empresa</label>
-            <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
-          </div>
-
-          <div class="row g-2 justify-content-center">
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="mb-3">
-                <label for="" class="form-label mb-1">Dirección</label>
-                <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
-              </div>
-            </div>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="mb-3">
-                <label for="" class="form-label mb-1">Correo Electrónico</label>
-                <input type="email" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="" class="form-label mb-1">Descripción</label>
-            <textarea class="form-control form-control-sm shadow-none" placeholder=""></textarea>
-          </div>
-
-          <div class="row g-2 justify-content-center">
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="mb-3">
-                <label for="" class="form-label mb-1">Telefono</label>
-                <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
-              </div>
-            </div>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="mb-3">
-                <label for="" class="form-label mb-1">Ruc</label>
-                <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
-              </div>
-            </div>
-          </div>
-
-        </section>
-      </section>
-
-
-      <div class="row g-2 justify-content-center">
-        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-          <!-- Propietario -->
-          <section class="propietario">
+          <!-- Empresa -->
+          <section class="empresa">
             <section class="header">
-              <h4>Propietario</h4>
+              <div class="d-flex justify-content-between align-self-center">
+                <h4>Empresa</h4>
+                <span class="align-self-center">
+                  <i class="bi bi-caret-down-fill" (click)="desplegue($event)" data-bs-toggle="collapse" href="#empresa"
+                    aria-expanded="true" aria-controls="empresa"></i>
+                </span>
+              </div>
             </section>
-
             <hr />
+            <section class="content collapse show" id="empresa">
 
-            <section class="content">
+              <div class="text-center">
 
+                <div class="d-block position-relative">
 
+                  <div class="position-absolute top-0 end-0">
+                    <div class="text-end reload me-3">
+                      <i class="bi bi-arrow-clockwise" (click)=" reloadSeleccion()"></i>
+                    </div>
+                  </div>
+
+                  <img class="rounded-circle border border-secondary" [ngSrc]="logoDefault" alt="Logo" width="150"
+                    height="150" id="imagen_seleccionada" priority>
+                </div>
+
+                <button class="contenedor-btn-file bordeado my-3">
+                  <i class="bi bi-cloud-arrow-up-fill"></i>
+                  Seleccionar Archivo
+                  <label for="logo"></label>
+                  <input type="hidden" id="logobase64" name="logobase64" value="{{logoNew}}" />
+                  <input type="file" id="logo" name="logo" (change)="LeerArchivo($event)">
+                </button>
+
+              </div>
+
+              <div class="mb-3">
+                <label for="" class="form-label mb-1">Nombre de la Empresa</label>
+                <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+              </div>
+
+              <div class="row g-2 justify-content-center">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Dirección</label>
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Correo Electrónico</label>
+                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="" class="form-label mb-1">Descripción</label>
+                <textarea class="form-control form-control-sm shadow-none" placeholder=""></textarea>
+              </div>
+
+              <div class="row g-2 justify-content-center">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Telefono</label>
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Ruc</label>
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+              </div>
 
             </section>
           </section>
-        </div>
 
-        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+          <!-- Propietario -->
+          <section class="propietario">
+            <section class="header">
+              <div class="d-flex justify-content-between align-self-center">
+                <h4>Propietario</h4>
+                <span class="align-self-center">
+                  <i class="bi bi-caret-up-fill" (click)="desplegue($event)" data-bs-toggle="collapse"
+                    href="#propietario" aria-expanded="false" aria-controls="propietario"></i>
+                </span>
+              </div>
+            </section>
+            <hr />
+
+            <section class="content collapse" id="propietario">
+              <div class="row g-1 justify-content-start">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Nombre</label>
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Apellido</label>
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Correo Electrónico</label>
+                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Contraseña</label>
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Sexo</label>
+                    <select name="" id="" class="form-select form-select-sm shadow-none">
+                      <option selected value="" disabled>.:: Selecciona el Sexo ::.</option>
+                      <option value="H">Hombre</option>
+                      <option value="M">Mujer</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">Telefono y/o Celular</label>
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="mb-3">
+                    <label for="" class="form-label mb-1">N° de Documento</label>
+                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </section>
+
           <!-- Redes Sociales -->
           <section class="redes-sociales">
             <section class="header">
@@ -162,15 +224,13 @@
               </div>
             </section>
           </section>
-        </div>
+
+          <footer class="text-end">
+            <button type="submit" class="btn registro-empresa"><small><i class="bi bi-floppy-fill"></i> Crear Empresa</small></button>
+          </footer>
+        </form>
+
       </div>
-
-
-
-
-
-
-
     </main>
 
     <footer>

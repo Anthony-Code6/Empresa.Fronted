@@ -1,3 +1,4 @@
+/* Tipo de Estilos */
 h3 {
   font-family: 'Times New Roman';
   font-size: 26px;
@@ -17,17 +18,24 @@ hr {
   color: #000000;
 }
 
+/* Contenido de todo el formulario */
+.body{
+  margin-top: 26px;
+}
+
 .container {
   margin-top: 10px;
   background-color: rgb(255, 255, 255);
   justify-content: center;
 }
 
+/* Empresa */
 textarea {
   resize: none;
   field-sizing: content;
 }
 
+/* Redes sociales */
 .redes-sociales .content {
   padding-left: 20px;
   padding-right: 20px;
@@ -48,6 +56,7 @@ span i {
 
 .reload i{
   cursor: pointer;
+  font-size: 17px;
 }
 
 /* Boton File */
@@ -108,4 +117,14 @@ span i {
   color: #fff;
 }
 
+/* Boton de guardar */
 
+main footer{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.registro-empresa{
+  background-color: #186CC3;
+  color: white;
+}

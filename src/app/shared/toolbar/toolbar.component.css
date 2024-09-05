@@ -1,11 +1,7 @@
-.example-spacer {
-  flex: 1 1 auto;
+*{
+  font-family: 'Times New Roman';
 }
 
-mat-toolbar{
-  margin-bottom: 10px;
-}
-
-.home{
-  cursor: pointer;
+.navbar-toggler{
+  font-size: 15px;
 }

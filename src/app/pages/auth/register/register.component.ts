@@ -5,17 +5,27 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { NgOptimizedImage } from '@angular/common'
+import { ToolbarComponent } from '../../../shared/toolbar/toolbar.component';
+
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, ReactiveFormsModule,NgOptimizedImage],
+  imports: [MatButtonModule, MatIconModule, ReactiveFormsModule, NgOptimizedImage, ToolbarComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
 
+  private message = inject(MatSnackBar);
+
   logoDefault: String = 'https://firebasestorage.googleapis.com/v0/b/ecommerce-f0e8c.appspot.com/o/logo%2Fdefault.jpg?alt=media&token=6026260e-59e9-4b01-b822-c2f0f6cd58c4'
+  logoNew !: String
 
   form!: FormGroup
   formulario = inject(FormBuilder)
@@ -24,6 +34,8 @@ export class RegisterComponent {
     this.form = this.formulario.group({
       lessons: this.formulario.array([])
     });
+
+
   }
 
   get lessons() {
@@ -43,18 +55,28 @@ export class RegisterComponent {
     this.lessons.removeAt(lessonIndex);
   }
 
-  plus(e: Event) {
+
+  /* Registro de Informacion */
+  guardarEmpresa(){
+    this.message.open('Completado', 'X', {
+      horizontalPosition: 'end',
+      verticalPosition: 'bottom',
+      duration:2000
+    });
+  }
+
+  /* Cambio de Icono de desplegue */
+  desplegue(e: Event) {
     let target = e.target as HTMLElement
     let name = target.className
 
-    if (name == 'bi bi-plus-lg') {
-      target.classList.remove('bi-plus-lg')
-      target.classList.add('bi-dash')
+    if (name == 'bi bi-caret-up-fill') {
+      target.classList.remove('bi-caret-up-fill')
+      target.classList.add('bi-caret-down-fill')
     } else {
-      target.classList.remove('bi-dash')
-      target.classList.add('bi-plus-lg')
+      target.classList.remove('bi-caret-down-fill')
+      target.classList.add('bi-caret-up-fill')
     }
-
   }
 
   /* Reiniciar Seleccion de archivo */
@@ -62,8 +84,11 @@ export class RegisterComponent {
     const imagen = document.getElementById('imagen_seleccionada') as HTMLInputElement
     imagen.src = this.logoDefault.toString()
 
-  }
+    const base64 = document.getElementById('logobase64') as HTMLInputElement
+    base64.value = ''
 
+    this.logoNew = ''
+  }
 
   /* Seleccionar el archivo */
   LeerArchivo(e: Event) {
@@ -77,9 +102,15 @@ export class RegisterComponent {
       reader.onload = () => {
         const result = reader.result as string;
 
+        // Agrega base 64 en la img
         const imagen = document.getElementById('imagen_seleccionada') as HTMLInputElement
         imagen.src = result
 
+        //Agrega el contenido a input
+        const base64 = document.getElementById('logobase64') as HTMLInputElement
+        base64.value = result
+
+        this.logoNew = result
       };
     }
 
