@@ -30,39 +30,43 @@ export class RegisterComponent {
   form!: FormGroup
   formulario = inject(FormBuilder)
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.form = this.formulario.group({
-      lessons: this.formulario.array([])
+      sociales: this.formulario.array([])
     });
 
 
   }
 
-  get lessons() {
-    return this.form.controls["lessons"] as FormArray;
+  get redesSociales() {
+    return this.form.controls["sociales"] as FormArray;
   }
 
-  addLesson() {
+  addRedesSociales() {
     const lessonForm = this.formulario.group({
-      title: ['', Validators.required],
-      level: ['', Validators.required]
+      idSocial: ['', Validators.required],
+      descripcion: ['', Validators.required]
     });
 
-    this.lessons.push(lessonForm);
+    this.redesSociales.push(lessonForm);
   }
 
-  deleteLesson(lessonIndex: number) {
-    this.lessons.removeAt(lessonIndex);
+  deleteRedesSociales(lessonIndex: number) {
+    this.redesSociales.removeAt(lessonIndex);
   }
 
 
   /* Registro de Informacion */
-  guardarEmpresa(){
+  guardarEmpresa() {
+    /*
     this.message.open('Completado', 'X', {
       horizontalPosition: 'end',
       verticalPosition: 'bottom',
       duration:2000
     });
+    */
+
+    console.log(this.form.value);
   }
 
   /* Cambio de Icono de desplegue */

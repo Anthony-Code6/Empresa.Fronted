@@ -1,8 +1,8 @@
 <nav class="navbar bg-body-tertiary navbar-expand-sm sticky-top">
   <div class="container-fluid">
     <div class="d-flex">
-      <i class="navbar-toggler me-3 border-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <i class="navbar-toggler me-3 border-0" data-bs-toggle="offcanvas" data-bs-target="#navegacion"
+        aria-controls="navegacion" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </i>
       <a class="navbar-brand align-self-center" routerLink="" routerLinkActive="active">Offcanvas navbar</a>
@@ -10,30 +10,55 @@
 
 
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas offcanvas-start rounded-end-4" tabindex="-1" id="navegacion"
+      aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h3 class="offcanvas-title w-100 text-center align-self-center mb-0" id="offcanvasNavbarLabel">Empresa</h3>
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
+        <div class="d-xxl-none d-xl-none d-lg-none d-md-none d-sm-none d-block text-center mb-3">
+          <img [ngSrc]="imgAuth" width="180" height="180" class="rounded-circle border mb-2" alt="" priority>
+
+          <!-- Informacion del Usuario -->
+          <div class="dropdown-center informacion-auth">
+            <p class="text-truncate w-100 dropdown-toggle nombre mb-1" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Anthony Enrique Velasquez Honorio</p>
+            <p class="m-0 p-0 text-muted">Adminitrador</p>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i
+                    class="bi bi-person-lines-fill"></i> Perfil</a></li>
+              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i class="bi bi-gear-fill"></i>
+                  Configuración</a></li>
+              <li>
+            </ul>
+          </div>
+          <hr>
+        </div>
+
+        <!-- Barra de navegacion -->
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-1">
+          <li class="nav-item align-self-center">
             <a class="nav-link" routerLink="/login" routerLinkActive="active">Iniciar Sesion</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item align-self-center">
             <a class="nav-link" routerLink="/register" routerLinkActive="active">Registrarse</a>
           </li>
-          <li class="nav-item dropdown d-xxl-block d-xl-block d-lg-block d-md-block d-sm-none  d-none">
+          <li
+            class="nav-item dropdown d-xxl-block d-xl-block d-lg-block d-md-block d-sm-block d-none align-self-center">
             <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img [ngSrc]="imgAuth" width="25" height="25" class="rounded-circle " alt="" priority>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i class="bi bi-person-lines-fill"></i> Perfil</a></li>
-              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i class="bi bi-gear-fill"></i> Configuración</a></li>
+              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i
+                    class="bi bi-person-lines-fill"></i> Perfil</a></li>
+              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i class="bi bi-gear-fill"></i>
+                  Configuración</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" style="cursor: pointer;"><i class="bi bi-door-open-fill"></i> Cerrar Sesion</a></li>
+              <li><a class="dropdown-item" style="cursor: pointer;"><i class="bi bi-door-open-fill"></i> Cerrar
+                  Sesion</a></li>
             </ul>
           </li>
         </ul>

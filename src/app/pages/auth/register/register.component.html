@@ -8,7 +8,7 @@
 
     <main class="row -g-3 justify-content-center">
       <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-10 col-11">
-        <form autocomplete="off" enctype="multipart/form-data" (submit)="guardarEmpresa()">
+        <form autocomplete="off" enctype="multipart/form-data">
 
           <!-- Empresa -->
           <section class="empresa">
@@ -38,7 +38,8 @@
                     height="150" id="imagen_seleccionada" priority>
                 </div>
 
-                <button class="contenedor-btn-file bordeado my-3">
+
+                <button class="contenedor-btn-file bordeado my-3" type="button">
                   <i class="bi bi-cloud-arrow-up-fill"></i>
                   Seleccionar Archivo
                   <label for="logo"></label>
@@ -165,7 +166,7 @@
             <section class="header">
               <div class="d-flex justify-content-between align-self-center">
                 <h4>Redes Sociales</h4>
-                <span (click)="addLesson()" class="align-self-center">
+                <span (click)="addRedesSociales()" class="align-self-center">
                   <i class="bi bi-plus-lg"></i>
                 </span>
               </div>
@@ -177,45 +178,49 @@
 
               <div class="add-lessons-form" [formGroup]="form">
 
-                <div formArrayName="lessons">
-                  @for (lessonss of lessons.controls; track lessonss; let i = $index) {
+                <div formArrayName="sociales">
+                  @for (redes of redesSociales.controls; track redes; let i = $index) {
 
-                  <div class="d-flex justify-content-between mt-2">
-                    <div class="d-flex">
-                      <div class="form-check me-3 align-self-center">
-                        <input class="form-check-input shadow-none" type="radio" value="" name="social{{i}}"
-                          id="instagram{{i}}">
-                        <label class="form-check-label" for="instagram{{i}}">
-                          <i class="bi bi-instagram"></i>
-                        </label>
+                  <div [formGroupName]="i">
+                    <div class="d-flex justify-content-between mt-2">
+                      <div class="d-flex">
+                        <div class="form-check me-3 align-self-center">
+                          <input class="form-check-input shadow-none" type="radio" formControlName="idSocial " value="1"
+                            name="idSocial" [id]="i">
+                          <label class="form-check-label" for="{{i}}">
+                            <i class="bi bi-instagram"></i>
+                          </label>
+                        </div>
+
+                        <div class="form-check me-3 align-self-center">
+                          <input class="form-check-input shadow-none" type="radio" formControlName="idSocial" value="2"
+                            name="idSocial" id="{{i}}">
+                          <label class="form-check-label" for="{{i}}">
+                            <i class="bi bi-linkedin"></i>
+                          </label>
+                        </div>
+
+
+                        <div class="form-check me-3 align-self-center">
+                          <input class="form-check-input shadow-none" type="radio" formControlName="idSocial" value="3"
+                            name="idSocial" id="{{i}}">
+                          <label class="form-check-label" for="{{i}}">
+                            <i class="bi bi-facebook"></i>
+                          </label>
+                        </div>
                       </div>
 
-                      <div class="form-check me-3 align-self-center">
-                        <input class="form-check-input shadow-none" type="radio" value="" name="social{{i}}"
-                          id="linkedin{{i}}">
-                        <label class="form-check-label" for="linkedin{{i}}">
-                          <i class="bi bi-linkedin"></i>
-                        </label>
-                      </div>
+                      <span (click)="deleteRedesSociales(i)" class="align-self-center">
+                        <i class="bi bi-trash3"></i>
+                      </span>
 
-                      <div class="form-check me-3 align-self-center">
-                        <input class="form-check-input shadow-none" type="radio" value="" name="social{{i}}"
-                          id="facebook{{i}}">
-                        <label class="form-check-label" for="facebook{{i}}">
-                          <i class="bi bi-facebook"></i>
-                        </label>
-                      </div>
                     </div>
 
-                    <span (click)="deleteLesson(i)" class="align-self-center">
-                      <i class="bi bi-trash3"></i>
-                    </span>
-
-                  </div>
-
-                  <div class="w-100">
-                    <input type="text" class="form-control form-control-sm shadow-none"
-                      placeholder="Ingrese la dirección de la red social." />
+                    <div class="w-100">
+                      <input type="text" class="form-control form-control-sm shadow-none"
+                        placeholder="Ingrese la dirección de la red social." name="descripcion" id="descripcion"
+                        formControlName="descripcion" />
+                    </div>
                   </div>
 
                   }
@@ -226,7 +231,9 @@
           </section>
 
           <footer class="text-end">
-            <button type="submit" class="btn registro-empresa"><small><i class="bi bi-floppy-fill"></i> Crear Empresa</small></button>
+            <button type="button" class="btn registro-empresa" (click)="guardarEmpresa()"><small><i
+                  class="bi bi-floppy-fill"></i> Crear
+                Empresa</small></button>
           </footer>
         </form>
 
