@@ -44,7 +44,7 @@ export class RegisterComponent {
 
   addRedesSociales() {
     const lessonForm = this.formulario.group({
-      idSocial: ['', Validators.required],
+      social: ['', Validators.required],
       descripcion: ['', Validators.required]
     });
 
