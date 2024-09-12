@@ -1,29 +1,27 @@
+<app-loading [time]="2000"/>
 <div class="contenedor">
   <div class="card mx-3">
     <div class="card-body">
       <h3 class="text-center">Inicio de Sesión</h3>
-      <hr/>
-      <div class="row g-1 justify-content-start">
-        <div class="col-12">
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control shadow-none" id="email" placeholder="name@example.com">
-            <label for="email"><i class="bi bi-envelope"></i> Correo Electrónico</label>
+      <hr />
+      <form enctype="multipart/form-data" method="post" autocomplete="off">
+        <div class="row g-1 justify-content-start">
+          <div class="col-12">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control shadow-none" id="email" placeholder="name@example.com">
+              <label for="email"><i class="bi bi-envelope-fill"></i> Correo Electrónico</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control shadow-none" id="password" placeholder="password">
+              <label for="password"><i class="bi bi-key-fill"></i> Contraseña</label>
+            </div>
           </div>
         </div>
-        <div class="col-12">
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control shadow-none" id="password" placeholder="password">
-            <label for="password"><i class="bi bi-shield-lock"></i> Contraseña</label>
-          </div>
 
-
-        </div>
-      </div>
-
-      <div class="buttom">
-        <button mat-flat-button color="primary"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
-      </div>
-
+        <button type="button" class="btn btn-primary"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
+      </form>
     </div>
   </div>
 </div>

@@ -13,6 +13,6 @@ import { NgOptimizedImage } from '@angular/common'
 })
 export class ToolbarComponent {
 
-  imgAuth: String = 'https://firebasestorage.googleapis.com/v0/b/ecommerce-f0e8c.appspot.com/o/logo%2Fdefault.jpg?alt=media&token=6026260e-59e9-4b01-b822-c2f0f6cd58c4'
+  imgAuth: String = 'https://firebasestorage.googleapis.com/v0/b/ecommerce-8b135.appspot.com/o/photo%2Fphoto.png?alt=media&token=93cb7439-0886-454e-a759-5dbdafa1b25d'
 
 }

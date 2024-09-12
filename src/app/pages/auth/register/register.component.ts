@@ -1,42 +1,41 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 
 import { NgOptimizedImage } from '@angular/common'
 import { ToolbarComponent } from '../../../shared/toolbar/toolbar.component';
+import { NgToastModule, NgToastService } from 'ng-angular-popup'
+import { LoadingComponent } from '../../../shared/loading/loading.component';
 
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, ReactiveFormsModule, NgOptimizedImage, ToolbarComponent],
+  imports: [ReactiveFormsModule, NgOptimizedImage, ToolbarComponent, NgToastModule, LoadingComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit, OnDestroy {
 
-  private message = inject(MatSnackBar);
-
-  logoDefault: String = 'https://firebasestorage.googleapis.com/v0/b/ecommerce-f0e8c.appspot.com/o/logo%2Fdefault.jpg?alt=media&token=6026260e-59e9-4b01-b822-c2f0f6cd58c4'
+  logoDefault: String = 'https://firebasestorage.googleapis.com/v0/b/ecommerce-8b135.appspot.com/o/ecommerce%2Fecommerce.png?alt=media&token=94827f3e-128d-46d1-b7c7-5bf2afe95bff'
   logoNew !: String
+
 
   form!: FormGroup
   formulario = inject(FormBuilder)
+
+  private toast = inject(NgToastService)
 
   ngOnInit() {
     this.form = this.formulario.group({
       sociales: this.formulario.array([])
     });
+  }
 
+  ngOnDestroy() {
 
   }
+
+  /* Redes Sociales Array */
 
   get redesSociales() {
     return this.form.controls["sociales"] as FormArray;
@@ -44,8 +43,8 @@ export class RegisterComponent {
 
   addRedesSociales() {
     const lessonForm = this.formulario.group({
-      social: ['', Validators.required],
-      descripcion: ['', Validators.required]
+      social: ['1', [Validators.required]],
+      descripcion: ['', [Validators.required]]
     });
 
     this.redesSociales.push(lessonForm);
@@ -57,6 +56,7 @@ export class RegisterComponent {
 
 
   /* Registro de Informacion */
+
   guardarEmpresa() {
     /*
     this.message.open('Completado', 'X', {
@@ -66,7 +66,11 @@ export class RegisterComponent {
     });
     */
 
-    console.log(this.form.value);
+    if (this.form.valid) {
+      console.log(this.form.value);
+    }
+
+
   }
 
   /* Cambio de Icono de desplegue */
@@ -88,8 +92,8 @@ export class RegisterComponent {
     const imagen = document.getElementById('imagen_seleccionada') as HTMLInputElement
     imagen.src = this.logoDefault.toString()
 
-    const base64 = document.getElementById('logobase64') as HTMLInputElement
-    base64.value = ''
+    //const base64 = document.getElementById('logobase64') as HTMLInputElement
+    //base64.value = ''
 
     this.logoNew = ''
   }
@@ -102,20 +106,29 @@ export class RegisterComponent {
       const file = target.files[0];
       const reader = new FileReader();
 
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const result = reader.result as string;
+      console.log(file.size);
 
-        // Agrega base 64 en la img
-        const imagen = document.getElementById('imagen_seleccionada') as HTMLInputElement
-        imagen.src = result
+      if (file.size >= 56320) {
 
-        //Agrega el contenido a input
-        const base64 = document.getElementById('logobase64') as HTMLInputElement
-        base64.value = result
+        this.toast.danger("El archivo supero a los 55Kb permitido por el sistema");
+        this.reloadSeleccion()
+      } else {
 
-        this.logoNew = result
-      };
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          const result = reader.result as string;
+
+          // Agrega base 64 en la img
+          const imagen = document.getElementById('imagen_seleccionada') as HTMLInputElement
+          imagen.src = result
+
+          //Agrega el contenido a input
+          const base64 = document.getElementById('logobase64') as HTMLInputElement
+          //base64.value = result
+
+          this.logoNew = result
+        };
+      }
     }
 
   }

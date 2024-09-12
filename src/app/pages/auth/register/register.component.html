@@ -1,3 +1,5 @@
+<app-loading [time]="2000" />
+
 <app-toolbar />
 
 <section class="body">
@@ -24,6 +26,14 @@
             <hr />
             <section class="content collapse show" id="empresa">
 
+              <!-- Mensaje del archivo -->
+              <div class="alert alert-warning d-flex align-items-center justify-content-center" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <div>
+                  El archivo a escoger debe pesar como 55kb para guardarlo como su logo personalizado de la empresa.
+                </div>
+              </div>
+
               <div class="text-center">
 
                 <div class="d-block position-relative">
@@ -43,7 +53,7 @@
                   <i class="bi bi-cloud-arrow-up-fill"></i>
                   Seleccionar Archivo
                   <label for="logo"></label>
-                  <input type="hidden" id="logobase64" name="logobase64" value="{{logoNew}}" />
+                  <!--<input type="hidden" id="logobase64" name="logobase64" value="{{logoNew}}" />-->
                   <input type="file" id="logo" name="logo" (change)="LeerArchivo($event)">
                 </button>
 
@@ -51,40 +61,45 @@
 
               <div class="mb-3">
                 <label for="" class="form-label mb-1">Nombre de la Empresa</label>
-                <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
+                  placeholder="Titulo de la Empresa ...." />
               </div>
 
               <div class="row g-2 justify-content-center">
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Dirección</label>
-                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Dirección ...." />
                   </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Correo Electrónico</label>
-                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Correo Electrónico ...." />
                   </div>
                 </div>
               </div>
 
               <div class="mb-3">
                 <label for="" class="form-label mb-1">Descripción</label>
-                <textarea class="form-control form-control-sm shadow-none" placeholder=""></textarea>
+                <textarea class="form-control form-control-sm shadow-none" placeholder="Descripción ...."></textarea>
               </div>
 
               <div class="row g-2 justify-content-center">
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Telefono</label>
-                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Telefono ...." />
                   </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Ruc</label>
-                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Ruc ...." />
                   </div>
                 </div>
               </div>
@@ -110,26 +125,30 @@
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Nombre</label>
-                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Nombre ...." />
                   </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Apellido</label>
-                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Apellido ...." />
                   </div>
                 </div>
 
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Correo Electrónico</label>
-                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Correo Electrónico ...." />
                   </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Contraseña</label>
-                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Contraseña ...." />
                   </div>
                 </div>
 
@@ -146,14 +165,16 @@
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Telefono y/o Celular</label>
-                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="Telefono y/o Celular ...." />
                   </div>
                 </div>
 
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">N° de Documento</label>
-                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none" placeholder="" />
+                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none"
+                      placeholder="N° de Documento ...." />
                   </div>
                 </div>
 
@@ -202,6 +223,15 @@
                             id="social{{i}}">
                           <i class="bi bi-facebook"></i>
                         </div>
+
+                        <div class="form-check me-3 align-self-center">
+                          <input class="form-check-input shadow-none" type="radio" formControlName="social" value="4"
+                            id="social{{i}}">
+                            <i class="bi bi-browser-edge"></i>
+                        </div>
+
+
+
                       </div>
 
                       <span (click)="deleteRedesSociales(i)" class="align-self-center">
@@ -215,6 +245,15 @@
                         placeholder="Ingrese la dirección de la red social." name="descripcion" id="descripcion"
                         formControlName="descripcion" />
                     </div>
+
+                    @if (redes.get('descripcion')?.invalid && redes.get('descripcion')?.touched ||
+                    redes.get('descripcion')?.dirty ) {
+
+                    @if (redes.get('descripcion')?.errors?.['required'] ) {
+                    <small class="error"><i class="bi bi-bug-fill"></i> Debes seleccionar e ingresar el link de la red social.</small>
+                    }
+
+                    }
                   </div>
 
                   }
@@ -225,8 +264,9 @@
           </section>
 
           <footer class="text-end">
-            <button type="button" class="btn registro-empresa" (click)="guardarEmpresa()"><small><i
-                  class="bi bi-floppy-fill"></i> Crear
+            <button type="button" class="btn btn-primary registro-empresa" [disabled]="!form.valid"
+              (click)="guardarEmpresa()">
+              <small><i class="bi bi-floppy-fill"></i> Crear
                 Empresa</small></button>
           </footer>
         </form>

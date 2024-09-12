@@ -10,7 +10,7 @@ h4 {
   margin: 0px;
 }
 
-label{
+label {
   font-family: 'Times New Roman';
 }
 
@@ -19,7 +19,7 @@ hr {
 }
 
 /* Contenido de todo el formulario */
-.body{
+.body {
   margin-top: 26px;
 }
 
@@ -36,9 +36,12 @@ textarea {
 }
 
 /* Redes sociales */
-.redes-sociales .content {
-  padding-left: 20px;
-  padding-right: 20px;
+.redes-sociales {
+  .content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
 }
 
 span {
@@ -54,7 +57,7 @@ span i {
 
 /* Reiniciar Archivo */
 
-.reload i{
+.reload i {
   cursor: pointer;
   font-size: 17px;
 }
@@ -119,12 +122,17 @@ span i {
 
 /* Boton de guardar */
 
-main footer{
+main footer {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.registro-empresa{
+.registro-empresa {
   background-color: #186CC3;
   color: white;
+}
+
+.error {
+  color: darkred;
+  margin-left: 5px;
 }
