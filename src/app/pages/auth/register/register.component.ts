@@ -5,7 +5,8 @@ import { NgOptimizedImage } from '@angular/common'
 import { ToolbarComponent } from '../../../shared/toolbar/toolbar.component';
 import { NgToastModule, NgToastService } from 'ng-angular-popup'
 import { LoadingComponent } from '../../../shared/loading/loading.component';
-
+import { RedesSocialesService } from '../../../services/redes-sociales.service';
+import { RedesSociales, RedesSocialesSellst } from '../../../interfaces/redes-sociales';
 
 @Component({
   selector: 'app-register',
@@ -19,21 +20,28 @@ export class RegisterComponent implements OnInit, OnDestroy {
   logoDefault: String = 'https://firebasestorage.googleapis.com/v0/b/ecommerce-8b135.appspot.com/o/ecommerce%2Fecommerce.png?alt=media&token=94827f3e-128d-46d1-b7c7-5bf2afe95bff'
   logoNew !: String
 
+  listredSocial :RedesSociales[] = []
 
   form!: FormGroup
   formulario = inject(FormBuilder)
 
   private toast = inject(NgToastService)
+  private redesServices = inject(RedesSocialesService)
 
   ngOnInit() {
+    // Listar la informacion de las redes sociales permitidas por el sistema
+    this.SellstRedesSociales()
+
     this.form = this.formulario.group({
       sociales: this.formulario.array([])
     });
   }
 
   ngOnDestroy() {
-
+    this.redesServices.clearRedesSociales()
   }
+
+  ///////////////////////////////////////////////////////////////////
 
   /* Redes Sociales Array */
 
@@ -54,6 +62,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.redesSociales.removeAt(lessonIndex);
   }
 
+  ///////////////////////////////////////////////////////////////////
 
   /* Registro de Informacion */
 
@@ -72,6 +81,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 
   }
+
+  SellstRedesSociales(){
+    this.redesServices.RedesSociales_Sellst().subscribe((event:RedesSocialesSellst)=>{
+        if(event.exito){
+          this.listredSocial=event._redesSociales
+        }
+    })
+  }
+
+  ///////////////////////////////////////////////////////////////////
 
   /* Cambio de Icono de desplegue */
   desplegue(e: Event) {
