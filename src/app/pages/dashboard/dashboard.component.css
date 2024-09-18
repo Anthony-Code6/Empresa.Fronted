@@ -1,8 +1,11 @@
 main {
-  margin-left: 10px;
-  margin-right: 10px;
+  padding: 20px 5px 0px 5px;
 }
 
-.card-content {
-  justify-content: start;
+.graficas{
+  padding-top: 18px;
+}
+
+.row{
+  margin: 0px;
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { ErrorServerService } from './error-server.service';
 import { BehaviorSubject, catchError, Observable } from 'rxjs';
-import { RedesSociales,RedesSocialesSellst } from '../interfaces/redes-sociales';
+import { RedesSociales,RedesSocialesSellst } from '../interfaces/RedesSociales/redes-sociales';
 
 @Injectable({
   providedIn: 'root'

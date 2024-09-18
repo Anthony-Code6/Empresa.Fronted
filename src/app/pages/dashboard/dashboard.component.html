@@ -1,6 +1,16 @@
 <app-toolbar />
 <main>
-  <section class="card-content">
+  <section class="row g-3 m-0 justify-content-center">
+    @for (item of Cards; track item.Icon) {
+    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+      <app-cards [Icono]="item.Icon" [Titulo]="item.Titulo" [Ruta]="item.Acceso" />
+    </div>
+    }
+  </section>
 
+  <section class="graficas">
+    <div class="row justify-content-center">
+      <div class="col-lg-4"><app-graphics /></div>
+    </div>
   </section>
 </main>

@@ -1,17 +1,18 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { NgOptimizedImage } from '@angular/common'
 import { ToolbarComponent } from '../../../shared/toolbar/toolbar.component';
 import { NgToastModule, NgToastService } from 'ng-angular-popup'
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { RedesSocialesService } from '../../../services/redes-sociales.service';
-import { RedesSociales, RedesSocialesSellst } from '../../../interfaces/redes-sociales';
+import { RedesSociales,RedesSocialesSellst } from '../../../interfaces/RedesSociales/redes-sociales';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgOptimizedImage, ToolbarComponent, NgToastModule, LoadingComponent],
+  imports: [ReactiveFormsModule, NgOptimizedImage, ToolbarComponent, NgToastModule, LoadingComponent,NgxMaskDirective],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   logoDefault: String = 'https://firebasestorage.googleapis.com/v0/b/ecommerce-8b135.appspot.com/o/ecommerce%2Fecommerce.png?alt=media&token=94827f3e-128d-46d1-b7c7-5bf2afe95bff'
   logoNew !: String
 
-  listredSocial :RedesSociales[] = []
+  listredSocial: RedesSociales[] = []
 
   form!: FormGroup
   formulario = inject(FormBuilder)
@@ -33,8 +34,25 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.SellstRedesSociales()
 
     this.form = this.formulario.group({
+      empresa:new FormControl('',[Validators.required,Validators.maxLength(30),Validators.pattern(/^[a-zA-Z]+$/)]),
+      direccion_empresa:new FormControl('',[Validators.required,Validators.maxLength(30)]),
+      email_empresa:new FormControl('',[Validators.required,Validators.maxLength(200)]),
+      descripcion_empresa:new FormControl('',[Validators.required,Validators.maxLength(300)]),
+      telefono_empresa:new FormControl('',[Validators.required,Validators.maxLength(30)]),
+      rul_empresa:new FormControl('',[Validators.required,Validators.maxLength(30)]),
       sociales: this.formulario.array([])
     });
+  }
+
+
+  ngAfterViewChecked(): void {
+    this.redesServices.getRedesSociales().subscribe({
+      next: data => {
+        this.listredSocial = data
+      }, error: err => {
+
+      }
+    })
   }
 
   ngOnDestroy() {
@@ -82,11 +100,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   }
 
-  SellstRedesSociales(){
-    this.redesServices.RedesSociales_Sellst().subscribe((event:RedesSocialesSellst)=>{
-        if(event.exito){
-          this.listredSocial=event._redesSociales
-        }
+  SellstRedesSociales() {
+    this.redesServices.RedesSociales_Sellst().subscribe((event: RedesSocialesSellst) => {
+      if (event.exito) {
+        //this.listredSocial =
+        event._redesSociales.forEach(element => {
+          this.redesServices.setRedesSociales(element)
+        });
+
+      }
     })
   }
 

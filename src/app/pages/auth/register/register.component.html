@@ -10,7 +10,7 @@
 
     <main class="row -g-3 justify-content-center">
       <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-10 col-11">
-        <form autocomplete="off" enctype="multipart/form-data">
+        <form autocomplete="off" enctype="multipart/form-data" [formGroup]="form" (submit)="guardarEmpresa()">
 
           <!-- Empresa -->
           <section class="empresa">
@@ -61,25 +61,49 @@
 
               <div class="mb-3">
                 <label for="" class="form-label mb-1">Nombre de la Empresa</label>
-                <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
-                  placeholder="Titulo de la Empresa ...." />
+                <input type="text" name="nombre_empresa" id="nombre_empresa"
+                  class="form-control form-control-sm shadow-none" placeholder="Nombre de la Empresa ...."
+                  formControlName="empresa" />
+
+                @if(form.controls['empresa'].touched && form.controls['empresa'].invalid ||
+                form.controls['empresa'].dirty){
+                @if(form.controls['empresa'].errors?.['required']){
+                <small class="error"><i class="bi bi-bug-fill"></i> El nombre de la empresa es requeridad.</small>
+                }
+
+                @if(form.controls['empresa'].errors?.['pattern']){
+                <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite letras.</small>
+                }
+
+                @if(form.controls['empresa'].errors?.['maxlength']){
+                <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 30 letras.</small>
+                }
+                }
+
               </div>
 
-              <div class="row g-2 justify-content-center">
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="mb-3">
-                    <label for="" class="form-label mb-1">Dirección</label>
-                    <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
-                      placeholder="Dirección ...." />
-                  </div>
-                </div>
-                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="mb-3">
-                    <label for="" class="form-label mb-1">Correo Electrónico</label>
-                    <input type="email" name="" id="" class="form-control form-control-sm shadow-none"
-                      placeholder="Correo Electrónico ...." />
-                  </div>
-                </div>
+              <div class="mb-3">
+                <label for="" class="form-label mb-1">Dirección</label>
+                <input type="text" name="direccion_empresa" id="direccion_empresa"
+                  class="form-control form-control-sm shadow-none" placeholder="Dirección ...." formControlName="direccion_empresa" />
+
+                @if(form.controls['direccion_empresa'].touched && form.controls['direccion_empresa'].invalid ||
+                form.controls['direccion_empresa'].dirty){
+                @if(form.controls['direccion_empresa'].errors?.['required']){
+                <small class="error"><i class="bi bi-bug-fill"></i> La dirección es requeridad.</small>
+                }
+
+                @if(form.controls['direccion_empresa'].errors?.['maxlength']){
+                <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 30 letras.</small>
+                }
+                }
+
+              </div>
+
+              <div class="mb-3">
+                <label for="" class="form-label mb-1">Correo Electrónico</label>
+                <input type="email" name="email_empresa" id="email_empresa"
+                  class="form-control form-control-sm shadow-none" placeholder="Correo Electrónico ...." />
               </div>
 
               <div class="mb-3">
@@ -92,7 +116,7 @@
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Telefono</label>
                     <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
-                      placeholder="Telefono ...." />
+                      placeholder="999 999 999" mask="000 000 000" />
                   </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -249,8 +273,7 @@
           </section>
 
           <footer class="text-end">
-            <button type="button" class="btn btn-primary registro-empresa" [disabled]="!form.valid"
-              (click)="guardarEmpresa()">
+            <button type="button" class="btn btn-primary registro-empresa" (click)="guardarEmpresa()">
               <small><i class="bi bi-floppy-fill"></i> Crear
                 Empresa</small></button>
           </footer>
