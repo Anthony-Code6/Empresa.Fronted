@@ -6,13 +6,13 @@ import { ToolbarComponent } from '../../../shared/toolbar/toolbar.component';
 import { NgToastModule, NgToastService } from 'ng-angular-popup'
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { RedesSocialesService } from '../../../services/redes-sociales.service';
-import { RedesSociales,RedesSocialesSellst } from '../../../interfaces/RedesSociales/redes-sociales';
+import { RedesSociales, RedesSocialesSellst } from '../../../interfaces/RedesSociales/redes-sociales';
 import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgOptimizedImage, ToolbarComponent, NgToastModule, LoadingComponent,NgxMaskDirective],
+  imports: [ReactiveFormsModule, NgOptimizedImage, ToolbarComponent, NgToastModule, LoadingComponent, NgxMaskDirective],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -30,16 +30,29 @@ export class RegisterComponent implements OnInit, OnDestroy {
   private redesServices = inject(RedesSocialesService)
 
   ngOnInit() {
+
+
     // Listar la informacion de las redes sociales permitidas por el sistema
     this.SellstRedesSociales()
 
     this.form = this.formulario.group({
-      empresa:new FormControl('',[Validators.required,Validators.maxLength(30),Validators.pattern(/^[a-zA-Z]+$/)]),
-      direccion_empresa:new FormControl('',[Validators.required,Validators.maxLength(30)]),
-      email_empresa:new FormControl('',[Validators.required,Validators.maxLength(200)]),
-      descripcion_empresa:new FormControl('',[Validators.required,Validators.maxLength(300)]),
-      telefono_empresa:new FormControl('',[Validators.required,Validators.maxLength(30)]),
-      rul_empresa:new FormControl('',[Validators.required,Validators.maxLength(30)]),
+      // Empresa
+      empresa: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.pattern(/^[a-zA-Z]+$/)]),
+      direccion_empresa: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      email_empresa: new FormControl('', [Validators.required, Validators.maxLength(200), Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
+      descripcion_empresa: new FormControl('', [Validators.required, Validators.maxLength(300)]),
+      telefono_empresa: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      rul_empresa: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+
+      // Propietario
+      nombre_propietario: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.pattern(/^[a-zA-Z]+$/)]),
+      apellido_propietario: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.pattern(/^[a-zA-Z]+$/)]),
+      email_propietario: new FormControl('', [Validators.required, Validators.maxLength(200), Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
+      password_propietario: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
+      sexo_propietario: new FormControl('', [Validators.required]),
+      telefono_propietario: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      dni_propietario: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
+      // Redes Sociales
       sociales: this.formulario.array([])
     });
   }

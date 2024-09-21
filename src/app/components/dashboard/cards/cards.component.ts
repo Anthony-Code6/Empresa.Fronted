@@ -12,4 +12,5 @@ export class CardsComponent {
   @Input() Icono!: string
   @Input() Titulo!: string
   @Input() Ruta!: string
+  @Input() Cantidad!: string
 }

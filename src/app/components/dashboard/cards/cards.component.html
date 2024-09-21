@@ -1,12 +1,12 @@
-<a routerLink="{{Ruta}}">
-  <div class="card">
-    <div class="card-body">
-      <div class="d-flex flex-row">
-        <div class="col-auto m-0 me-3"><i class="{{Icono}}"></i></div>
-        <div class="col m-0 align-self-center">
-          <div class="titulo">{{Titulo}}</div>
-        </div>
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex flex-row">
+      <div class="col-auto m-0 me-3"><i class="{{Icono}}"></i></div>
+      <div class="col m-0 align-self-center">
+        <div class="titulo">{{Titulo}}</div>
+        <div class="resultado">{{Cantidad}} </div>
       </div>
     </div>
   </div>
-</a>
+  <a routerLink="{{Ruta}}" class="enlace"><i class="bi bi-arrow-right-circle-fill"></i> More Info</a>
+</div>

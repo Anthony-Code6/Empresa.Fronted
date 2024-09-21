@@ -13,6 +13,7 @@ export class LoadingComponent {
   private spinner = inject(NgxSpinnerService)
   @Input({ required: true }) time !: number
 
+  /*
   ngOnInit() {
     this.spinner.show();
 
@@ -21,5 +22,6 @@ export class LoadingComponent {
     }, this.time);
 
   }
+  */
 
 }

@@ -1,16 +1,20 @@
 <app-toolbar />
 <main>
   <section class="row g-3 m-0 justify-content-center">
-    @for (item of Cards; track item.Icon) {
-    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
-      <app-cards [Icono]="item.Icon" [Titulo]="item.Titulo" [Ruta]="item.Acceso" />
+    <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+      <app-cards Icono="bi bi-cart-fill" Titulo="Productos" Ruta="login" Cantidad="233" />
     </div>
-    }
+
+    <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+      <app-cards Icono="bi bi-person-fill" Titulo="Personal" Ruta="register" Cantidad="598" />
+    </div>
   </section>
 
   <section class="graficas">
     <div class="row justify-content-center">
-      <div class="col-lg-4"><app-graphics /></div>
+      <div class="col-lg-4">
+        <app-graphics />
+      </div>
     </div>
   </section>
 </main>
