@@ -115,7 +115,7 @@
                   @if(form.controls['email_empresa'].touched && form.controls['email_empresa'].invalid ||
                   form.controls['email_empresa'].dirty){
                   @if(form.controls['email_empresa'].errors?.['required']){
-                  <small class="error"><i class="bi bi-bug-fill"></i> El Correo Electrónico es requerido.</small>
+                  <small class="error"><i class="bi bi-bug-fill"></i> El correo electrónico es requerido.</small>
                   }
 
                   @if(form.controls['email_empresa'].errors?.['maxlength']){
@@ -164,7 +164,8 @@
                       ||
                       form.controls['telefono_empresa'].dirty){
                       @if(form.controls['telefono_empresa'].errors?.['required']){
-                      <small class="error"><i class="bi bi-bug-fill"></i> El telefono de la empresa es requerida.</small>
+                      <small class="error"><i class="bi bi-bug-fill"></i> El telefono es
+                        requerida.</small>
                       }
 
                       @if(form.controls['telefono_empresa'].errors?.['maxlength']){
@@ -180,7 +181,28 @@
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Ruc</label>
                     <input type="text" name="" id="" class="form-control form-control-sm shadow-none"
-                      placeholder="Ruc ...." formControlName="rul_empresa" />
+                      placeholder="Ruc ...." formControlName="ruc_empresa" />
+
+                    <div class="d-flex flex-column ">
+                      @if(form.controls['ruc_empresa'].touched && form.controls['ruc_empresa'].invalid
+                      ||
+                      form.controls['ruc_empresa'].dirty){
+                      @if(form.controls['ruc_empresa'].errors?.['required']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> El R.U.C es
+                        requerido.</small>
+                      }
+
+                      @if(form.controls['ruc_empresa'].errors?.['maxlength']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 30 letras.</small>
+                      }
+
+                      @if(form.controls['ruc_empresa'].errors?.['pattern']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite números.</small>
+                      }
+
+                      }
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -209,6 +231,27 @@
                     <input type="text" name="nombre_propietario" id="nombre_propietario"
                       class="form-control form-control-sm shadow-none" placeholder="Nombre ...."
                       formControlName="nombre_propietario" />
+
+                    <div class="d-flex flex-column ">
+                      @if(form.controls['nombre_propietario'].touched && form.controls['nombre_propietario'].invalid
+                      ||
+                      form.controls['nombre_propietario'].dirty){
+                      @if(form.controls['nombre_propietario'].errors?.['required']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> El nombre es
+                        requerido.</small>
+                      }
+
+                      @if(form.controls['nombre_propietario'].errors?.['maxlength']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 30 letras.</small>
+                      }
+
+                      @if(form.controls['nombre_propietario'].errors?.['pattern']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite letras.</small>
+                      }
+
+                      }
+                    </div>
+
                   </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -217,6 +260,27 @@
                     <input type="text" name="apellido_propietario" id="apellido_propietario"
                       class="form-control form-control-sm shadow-none" placeholder="Apellido ...."
                       formControlName="apellido_propietario" />
+
+                    <div class="d-flex flex-column ">
+                      @if(form.controls['apellido_propietario'].touched && form.controls['apellido_propietario'].invalid
+                      ||
+                      form.controls['apellido_propietario'].dirty){
+                      @if(form.controls['apellido_propietario'].errors?.['required']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> El apellido es
+                        requerido.</small>
+                      }
+
+                      @if(form.controls['apellido_propietario'].errors?.['maxlength']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 30 letras.</small>
+                      }
+
+                      @if(form.controls['apellido_propietario'].errors?.['pattern']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite letras.</small>
+                      }
+
+                      }
+                    </div>
+
                   </div>
                 </div>
 
@@ -251,9 +315,39 @@
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="mb-3">
                     <label for="" class="form-label mb-1">Contraseña</label>
-                    <input type="password" name="password" id="password"
+
+                    <div class="position-relative">
+                      <input type="{{verPassword ? 'text' : 'password'}}" name="password" id="password"
                       class="form-control form-control-sm shadow-none" placeholder="Contraseña ...."
                       formControlName="password_propietario" />
+
+                      <div class="position-absolute top-50 end-0 translate-middle-y me-2 password">
+                        <i class="bi bi-eye-slash-fill" (click)="mostrarPassword($event)"></i>
+                      </div>
+
+                    </div>
+
+
+
+                    <div class="d-flex flex-column ">
+                      @if(form.controls['password_propietario'].touched && form.controls['password_propietario'].invalid
+                      ||
+                      form.controls['password_propietario'].dirty){
+                      @if(form.controls['password_propietario'].errors?.['required']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> La contraseña es requerida.</small>
+                      }
+
+                      @if(form.controls['password_propietario'].errors?.['maxlength']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 16 digitos como maximo .</small>
+                      }
+
+                      @if(form.controls['password_propietario'].errors?.['minlength']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 8 digitos como minimo.</small>
+                      }
+
+                      }
+                    </div>
+
                   </div>
                 </div>
 
@@ -262,10 +356,23 @@
                     <label for="" class="form-label mb-1">Sexo</label>
                     <select name="sexo" id="sexo" class="form-select form-select-sm shadow-none"
                       formControlName="sexo_propietario">
-                      <option selected value="" disabled>.:: Selecciona el Sexo ::.</option>
+                      <option selected value="">.:: Selecciona el Sexo ::.</option>
                       <option value="H">Hombre</option>
                       <option value="M">Mujer</option>
                     </select>
+
+                    <div class="d-flex flex-column ">
+                      @if(form.controls['sexo_propietario'].touched && form.controls['sexo_propietario'].invalid
+                      ||
+                      form.controls['sexo_propietario'].dirty){
+                      @if(form.controls['sexo_propietario'].errors?.['required']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> El sexo es
+                        requerido.</small>
+                      }
+
+                      }
+                    </div>
+
                   </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -273,6 +380,27 @@
                     <label for="" class="form-label mb-1">Telefono y/o Celular</label>
                     <input type="text" name="celular" id="celular" class="form-control form-control-sm shadow-none"
                       placeholder="000 000 000" mask="000 000 000" formControlName="telefono_propietario" />
+
+                    <div class="d-flex flex-column ">
+                      @if(form.controls['telefono_propietario'].touched && form.controls['telefono_propietario'].invalid
+                      ||
+                      form.controls['telefono_propietario'].dirty){
+                      @if(form.controls['telefono_propietario'].errors?.['required']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> El R.U.C es
+                        requerido.</small>
+                      }
+
+                      @if(form.controls['telefono_propietario'].errors?.['maxlength']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 8 digitos.</small>
+                      }
+
+                      @if(form.controls['telefono_propietario'].errors?.['minlength']){
+                        <small class="error"><i class="bi bi-bug-fill"></i> Solo se permite 8 digitos.</small>
+                        }
+
+                      }
+                    </div>
+
                   </div>
                 </div>
 
@@ -281,6 +409,27 @@
                     <label for="" class="form-label mb-1">N° de Documento</label>
                     <input type="text" name="dni" id="dni" class="form-control form-control-sm shadow-none"
                       placeholder="00000000" mask="00000000" formControlName="dni_propietario" />
+
+                    <div class="d-flex flex-column ">
+                      @if(form.controls['dni_propietario'].touched && form.controls['dni_propietario'].invalid
+                      ||
+                      form.controls['dni_propietario'].dirty){
+                      @if(form.controls['dni_propietario'].errors?.['required']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> El documento es
+                        requerido.</small>
+                      }
+
+                      @if(form.controls['dni_propietario'].errors?.['maxlength']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> El documento debe tener 8 digitos.</small>
+                      }
+
+                      @if(form.controls['dni_propietario'].errors?.['minlength']){
+                      <small class="error"><i class="bi bi-bug-fill"></i> El documento debe tener 8 digitos.</small>
+                      }
+
+                      }
+                    </div>
+
                   </div>
                 </div>
 

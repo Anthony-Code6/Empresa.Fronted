@@ -26,6 +26,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   form!: FormGroup
   formulario = inject(FormBuilder)
 
+  verPassword: Boolean = false
+
   private toast = inject(NgToastService)
   private redesServices = inject(RedesSocialesService)
 
@@ -42,7 +44,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       email_empresa: new FormControl('', [Validators.required, Validators.maxLength(200), Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
       descripcion_empresa: new FormControl('', [Validators.required, Validators.maxLength(300)]),
       telefono_empresa: new FormControl('', [Validators.required, Validators.maxLength(30)]),
-      rul_empresa: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      ruc_empresa: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.pattern(/^[0-9]+$/)]),
 
       // Propietario
       nombre_propietario: new FormControl('', [Validators.required, Validators.maxLength(30), Validators.pattern(/^[a-zA-Z]+$/)]),
@@ -126,6 +128,22 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ///////////////////////////////////////////////////////////////////
+
+  /* Ocultar y Mostrar Contraseña */
+  mostrarPassword(e: Event) {
+    let target = e.target as HTMLElement
+    let name = target.className
+
+    if (name == 'bi bi-eye-slash-fill') {
+      target.classList.remove('bi-eye-slash-fill')
+      target.classList.add('bi-eye-fill')
+      this.verPassword = true
+    } else {
+      target.classList.remove('bi-eye-fill')
+      target.classList.add('bi-eye-slash-fill')
+      this.verPassword = false
+    }
+  }
 
   /* Cambio de Icono de desplegue */
   desplegue(e: Event) {

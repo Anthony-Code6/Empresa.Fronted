@@ -1,4 +1,4 @@
-<app-loading [time]="2000"/>
+<app-loading [time]="2000" />
 <div class="contenedor">
   <div class="card mx-3">
     <div class="card-body">
@@ -7,21 +7,34 @@
       <form enctype="multipart/form-data" method="post" autocomplete="off">
         <div class="row g-1 justify-content-start">
           <div class="col-12">
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control shadow-none" id="email" placeholder="name@example.com">
+            <div class="mb-3">
               <label for="email"><i class="bi bi-envelope-fill"></i> Correo Electrónico</label>
+              <input type="email" class="form-control shadow-none" id="email" placeholder="name@example.com">
             </div>
           </div>
           <div class="col-12">
-            <div class="form-floating mb-3">
-              <input type="password" class="form-control shadow-none" id="password" placeholder="password">
+            <div class="mb-3">
               <label for="password"><i class="bi bi-key-fill"></i> Contraseña</label>
+              <div class="position-relative">
+                <input type="{{verPassword ? 'text' : 'password'}}" class="form-control shadow-none" id="password"
+                  placeholder="******************">
+                <div class="position-absolute top-50 end-0 translate-middle-y me-2 password">
+                  <i class="bi bi-eye-slash-fill" (click)="mostrarPassword($event)"></i>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
 
-        <button type="button" class="btn btn-primary" (click)="login()"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
+        <button type="button" class="btn" (click)="login()"><i class="bi bi-box-arrow-in-right"></i>
+          Ingresar</button>
       </form>
+
+      <div class="footer-login">
+        Desear crear tu empresa? <a routerLink="/register">Registrate</a>
+      </div>
+
     </div>
   </div>
 </div>

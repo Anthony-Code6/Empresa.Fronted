@@ -136,3 +136,18 @@ main footer {
   color: darkred;
   margin-left: 5px;
 }
+
+
+input::-ms-reveal {
+  display: none;
+}
+
+.password{
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 100%;
+}
+
+.password:hover{
+  background-color: rgba(95, 94, 94, 0.37);
+}
