@@ -2,30 +2,48 @@ import { Component, inject } from '@angular/core';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { RouterLink } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [LoadingComponent,RouterLink],
+  imports: [LoadingComponent, RouterLink, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  form!: FormGroup
+  formulario = inject(FormBuilder)
   verPassword: Boolean = false
 
+
   private spinner = inject(NgxSpinnerService)
+  private toast = inject(NgToastService)
 
-  login() {
-    this.spinner.show()
-
-    setTimeout(() => {
-      this.spinner.hide()
-    }, 4000);
+  ngOnInit(): void {
+    this.form = this.formulario.group({
+      email: new FormControl('', [Validators.required, Validators.maxLength(200), Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)])
+    })
   }
 
-   /* Ocultar y Mostrar Contraseña */
-   mostrarPassword(e: Event) {
+  login() {
+    if (this.form.valid) {
+      this.spinner.show()
+      const email = this.form.controls['email'].value
+      setTimeout(() => {
+        this.spinner.hide()
+        this.toast.success(email, 'success', 2000)
+        this.form.reset()
+      }, 4000);
+    }
+  }
+
+  /* Ocultar y Mostrar Contraseña */
+  mostrarPassword(e: Event) {
     let target = e.target as HTMLElement
     let name = target.className
 
