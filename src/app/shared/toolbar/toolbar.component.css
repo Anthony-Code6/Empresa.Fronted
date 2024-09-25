@@ -1,8 +1,8 @@
-*{
+* {
   font-family: 'Times New Roman';
 }
 
-.navbar-toggler{
+.navbar-toggler {
   font-size: 15px;
 }
 
@@ -13,11 +13,12 @@ h3 {
   font-size: 26px;
 }
 
-#navegacion{
-
-  width: 40%;
-  min-width: 60%;
+#navegacion {
+  width: 10%;
+  min-width: max-content;
   max-width: 100%;
+}
 
-
+.dropdown-menu{
+  margin-right: 10px;
 }

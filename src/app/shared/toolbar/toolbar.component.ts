@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 
 import { NgOptimizedImage } from '@angular/common'
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -13,6 +14,7 @@ import { NgOptimizedImage } from '@angular/common'
 })
 export class ToolbarComponent {
 
+  authServices = inject(AuthService)
   imgAuth: String = 'https://firebasestorage.googleapis.com/v0/b/ecommerce-8b135.appspot.com/o/photo%2Fphoto.png?alt=media&token=93cb7439-0886-454e-a759-5dbdafa1b25d'
 
 }

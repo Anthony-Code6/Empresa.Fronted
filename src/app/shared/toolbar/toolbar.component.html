@@ -1,15 +1,39 @@
-<nav class="navbar bg-body-tertiary navbar-expand-sm sticky-top">
+<nav class="navbar bg-body-tertiary sticky-top">
   <div class="container-fluid">
     <div class="d-flex">
+      @if(authServices.isLoggeIn()){
       <i class="navbar-toggler me-3 border-0" data-bs-toggle="offcanvas" data-bs-target="#navegacion"
         aria-controls="navegacion" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </i>
+      }
+
       <a class="navbar-brand align-self-center" routerLink="" routerLinkActive="active">Ecommerce</a>
     </div>
 
 
+    <div class="justify-content-end d-flex flex-row">
+      <a class="nav-link me-2 mt-1" routerLink="/login" routerLinkActive="active">Iniciar Sesion</a>
+      <a class="nav-link me-2 mt-1" routerLink="/register" routerLinkActive="active">Registrarse</a>
+      @if(authServices.isLoggeIn()){
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <img [ngSrc]="imgAuth" width="25" height="25" class="rounded-circle " alt="" priority>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i
+              class="bi bi-person-lines-fill"></i> Perfil</a></li>
+        <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i class="bi bi-gear-fill"></i>
+            Configuración</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" style="cursor: pointer;"><i class="bi bi-door-open-fill"></i> Cerrar
+            Sesion</a></li>
+      </ul>
+      }
+    </div>
 
+    @if(authServices.isLoggeIn()){
     <div class="offcanvas offcanvas-start rounded-end-4" tabindex="-1" id="navegacion"
       aria-labelledby="offcanvasNavbarLabel">
       <!--
@@ -19,13 +43,12 @@
       </div>
       -->
       <div class="offcanvas-body">
-        <div class="d-xxl-none d-xl-none d-lg-none d-md-none d-sm-none d-block text-center mb-3">
-          <img [ngSrc]="imgAuth" width="180" height="180" class="rounded-circle border mb-2" alt="" priority>
+        <div class="d-block text-center mb-3">
+          <img [ngSrc]="imgAuth" width="120" height="120" class="rounded-circle border mb-2" alt="" priority>
 
           <!-- Informacion del Usuario -->
           <div class="dropdown-center informacion-auth">
-            <p class="text-truncate w-100 dropdown-toggle nombre mb-1" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Anthony Enrique Velasquez Honorio</p>
+            <p class="text-truncate w-100 mb-1">Anthony Enrique Velasquez Honorio</p>
             <p class="m-0 p-0 text-muted">Adminitrador</p>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i
@@ -55,25 +78,9 @@
             </li>
           </div>
 
-          <li
-            class="nav-item dropdown d-xxl-block d-xl-block d-lg-block d-md-block d-sm-block d-none">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img [ngSrc]="imgAuth" width="25" height="25" class="rounded-circle " alt="" priority>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i
-                    class="bi bi-person-lines-fill"></i> Perfil</a></li>
-              <li><a class="dropdown-item" routerLink="/login" routerLinkActive="active"><i class="bi bi-gear-fill"></i>
-                  Configuración</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" style="cursor: pointer;"><i class="bi bi-door-open-fill"></i> Cerrar
-                  Sesion</a></li>
-            </ul>
-          </li>
         </ul>
       </div>
     </div>
+    }
   </div>
 </nav>
