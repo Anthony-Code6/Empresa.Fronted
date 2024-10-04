@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { ErrorServerService } from './error-server.service';
 import { BehaviorSubject, catchError, Observable } from 'rxjs';
-import { RedesSociales,RedesSocialesSellst } from '../interfaces/RedesSociales/redes-sociales';
+import { RedesSociales,ResponseMessageRedesSociales } from '../interfaces/RedesSociales/redes-sociales';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class RedesSocialesService {
 
   /* Peticiones */
 
-  RedesSociales_Sellst(): Observable<RedesSocialesSellst> {
-    return this.http.get<RedesSocialesSellst>(this.url + 'RedesSociales_Sellst').pipe(catchError(this.error_services.handleError))
+  RedesSociales_Sellst(): Observable<ResponseMessageRedesSociales> {
+    return this.http.get<ResponseMessageRedesSociales>(this.url + 'RedesSociales_Sellst').pipe(catchError(this.error_services.handleError))
   }
 }

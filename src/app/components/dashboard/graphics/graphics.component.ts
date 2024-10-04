@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js/auto';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Chart, ChartType } from 'chart.js/auto';
 
 @Component({
   selector: 'app-graphics',
@@ -8,18 +8,27 @@ import { Chart } from 'chart.js/auto';
   templateUrl: './graphics.component.html',
   styleUrl: './graphics.component.css'
 })
-export class GraphicsComponent implements OnInit {
+export class GraphicsComponent implements OnInit, AfterViewInit {
   public chart!: Chart
+  @Input({ required: true }) ids !: string
+  @Input({ required: true }) types !: string
+  @Input({ required: true }) labels !: string[]
+  @Input({ required: true }) titles !: string
+  @Input({ required: true }) datas !: number[]
 
   ngOnInit() {
+
+  }
+
+  ngAfterViewInit(): void {
     this.getLinea()
   }
 
   getLinea() {
     const data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: this.labels,
       datasets: [{
-        label: 'Looping tension',
+        label: this.titles,
         data: [65, 59, 80, 81, 26, 55, 40],
         fill: false,
         borderColor: [
@@ -44,7 +53,7 @@ export class GraphicsComponent implements OnInit {
     };
 
     const config = {
-      type: 'line',
+      type: this.types,
       data: data,
       options: {
         animations: {
@@ -56,17 +65,19 @@ export class GraphicsComponent implements OnInit {
             loop: true
           }
         },
+        responsive: true, // Hace que el gráfico sea responsivo
+        maintainAspectRatio: false, // Permite ajustar la altura del contenedor
         scales: {
-          y: { // defining min and max so hiding the dataset does not change scale range
-            min: 0,
-            max: 100
+          y: {
+            beginAtZero: true
           }
         }
       }
     };
 
-    this.chart = new Chart('graficas', {
-      type: 'line',
+    const tipo = this.types
+    this.chart = new Chart(this.ids, {
+      type: this.types as ChartType,
       data: data,
       options: {
         animations: {

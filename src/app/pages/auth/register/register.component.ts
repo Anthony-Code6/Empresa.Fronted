@@ -6,7 +6,7 @@ import { ToolbarComponent } from '../../../shared/toolbar/toolbar.component';
 import { NgToastModule, NgToastService } from 'ng-angular-popup'
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { RedesSocialesService } from '../../../services/redes-sociales.service';
-import { RedesSociales, RedesSocialesSellst } from '../../../interfaces/RedesSociales/redes-sociales';
+import { RedesSociales, ResponseMessageRedesSociales } from '../../../interfaces/RedesSociales/redes-sociales';
 import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
@@ -64,6 +64,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.redesServices.getRedesSociales().subscribe({
       next: data => {
         this.listredSocial = data
+        console.log(data);
+
       }, error: err => {
 
       }
@@ -116,10 +118,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   SellstRedesSociales() {
-    this.redesServices.RedesSociales_Sellst().subscribe((event: RedesSocialesSellst) => {
+    this.redesServices.RedesSociales_Sellst().subscribe((event: ResponseMessageRedesSociales) => {
       if (event.exito) {
         //this.listredSocial =
-        event._redesSociales.forEach(element => {
+        event._redesSociales?.forEach(element => {
           this.redesServices.setRedesSociales(element)
         });
 

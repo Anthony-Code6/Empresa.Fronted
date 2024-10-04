@@ -4,7 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent {
   formulario = inject(FormBuilder)
   verPassword: Boolean = false
 
-
+  private router = inject(Router)
   private spinner = inject(NgxSpinnerService)
   private toast = inject(NgToastService)
 
@@ -38,6 +38,7 @@ export class LoginComponent {
         this.spinner.hide()
         this.toast.success(email, 'success', 2000)
         this.form.reset()
+        this.router.navigateByUrl('/register')
       }, 4000);
     }
   }
